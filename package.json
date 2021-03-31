@@ -24,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pretty-quick": "pretty-quick"
   },
   "eslintConfig": {
     "extends": [
@@ -45,7 +46,7 @@
     ]
   },
   "devDependencies": {
-    "husky": "^6.0.0",
+    "husky": "4.3.6",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0"
   },
