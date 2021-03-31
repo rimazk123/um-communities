@@ -15,10 +15,10 @@ const Container = styled.div`
   margin: 20px auto;
 `;
 
-let filters = {platform: "discord"};
+let filters = { platform: "discord" };
 
 export default function Main() {
-  const [filter, setFilter] = useState({}); 
+  const [filter, setFilter] = useState({});
   console.log(useCommunities(filter));
   console.log("rerender");
   return (

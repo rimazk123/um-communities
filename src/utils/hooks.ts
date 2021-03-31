@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import db from "./firebaseSetup";
 
 interface Filters {
-  platform?: string,
-  categories?: string[],
+  platform?: string;
+  categories?: string[];
 }
 
 interface ICardDTO {
@@ -17,9 +17,9 @@ const useCommunities = (filters: Filters) => {
   useEffect(() => {
     const fetch = async () => {
       let query = await db.collection("approved-communties").get();
-      let docs = query.docs.map(doc => doc.data() as ICardDTO);
+      let docs = query.docs.map((doc) => doc.data() as ICardDTO);
       setCommunities(docs);
-    }
+    };
     fetch();
   }, [filters]);
 
