@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -7,6 +7,7 @@ import {
   Checkbox,
 } from "@material-ui/core";
 import styled from "styled-components";
+import { platform } from "node:os";
 
 const Container = styled.div`
   display: flex;
@@ -29,28 +30,46 @@ const StyledLabel = styled(FormControlLabel)`
   margin-bottom: -15px;
 `;
 
-const platforms = ["Facebook", "Discord", "Slack", "Groupme"];
+const platformsDefault: { [key: string]: boolean } = {
+  Facebook: false,
+  Discord: false,
+  Slack: false,
+  Groupme: false,
+  Other: false,
+};
 
-const labels = [
-  "Entrepreneurship",
-  "Engineering",
-  "Software Development",
-  "Social",
-  "Gaming",
-  "Sports",
-];
+const labelsDefault: { [key: string]: boolean } = {
+  Entrepreneurship: false,
+  Engineering: false,
+  Social: false,
+  Gaming: false,
+  Sports: false,
+};
 
 export default function CheckBoxes() {
+  const [platforms, setPlatforms] = useState(platformsDefault);
+  const [labels, setLabels] = useState(labelsDefault);
+
+  const getPlatformClick = (platform: string) => {
+    return () =>
+      setPlatforms({ ...platforms, [platform]: !platforms[platform] });
+  };
+
+  const getLabelClick = (label: string) => {
+    return () => setLabels({ ...labels, [label]: !labels[label] });
+  };
+
   return (
     <Container>
       <StyledFormControl>
         <StyledLegend>Categories</StyledLegend>
         <FormGroup>
-          {labels.map((label) => (
+          {Object.keys(labelsDefault).map((label) => (
             <StyledLabel
               control={<Checkbox name={label} />}
               label={label}
               key={label}
+              onChange={getLabelClick(label)}
             />
           ))}
         </FormGroup>
@@ -58,11 +77,12 @@ export default function CheckBoxes() {
       <StyledFormControl>
         <StyledLegend>Platform</StyledLegend>
         <FormGroup>
-          {platforms.map((platform) => (
+          {Object.keys(platforms).map((platform) => (
             <StyledLabel
               control={<Checkbox name={platform} />}
               label={platform}
               key={platform}
+              onChange={getPlatformClick(platform)}
             />
           ))}
         </FormGroup>
