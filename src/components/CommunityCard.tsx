@@ -9,48 +9,36 @@ import {
   CardMedia,
   Typography,
 } from "@material-ui/core";
-
-interface ICardDTO {
-  community: string;
-  platform: string;
-  image: string;
-}
+import { Community } from "../utils/types";
 
 const StyledCard = styled(Card)`
-  width: 275px;
+  width: 256px;
+  margin: 10px 20px;
+  box-shadow: none;
+  border: 1px solid darkgray;
+  border-radius: 10px;
 `;
 
 const StyledMedia = styled(CardMedia)`
-  height: 140px;
+  height: 256px;
+  background-size: cover;
 `;
 
-export default function CommunityCard({
-  community,
-  platform,
-  image,
-}: ICardDTO) {
+export default function CommunityCard({ name, type, logo }: Community) {
   return (
     <StyledCard>
       <CardActionArea>
-        <StyledMedia image={image} title={community} />
+        <StyledMedia image={logo} title={name} />
         <CardContent>
           <Typography gutterBottom variant="h5">
-            Lizard
+            {name}
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            Here is a description of the community.
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          {platform}
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
+      <CardActions></CardActions>
     </StyledCard>
   );
 }

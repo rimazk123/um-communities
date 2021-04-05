@@ -1,7 +1,12 @@
 export interface Community {
-  categories: string;
+  categories?: string;
   logo?: string;
-  name: string;
-  type: "Discord" | "Facebook" | "GroupMe" | "Slack";
-  url: string;
+  name?: string;
+  type?: string;
+  url?: string;
+}
+
+export interface Filters {
+  platforms: string[];
+  categories: string[];
 }

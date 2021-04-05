@@ -1,24 +1,45 @@
 import { useState, useEffect } from "react";
 import db from "./firebaseSetup";
-
-interface Filters {
-  platform?: string;
-  categories?: string[];
-}
-
-interface ICardDTO {
-  community: string;
-  platform: string;
-  image: string;
-}
+import { labelTypes, platformTypes } from "./constants";
+import { Community, Filters } from "./types";
 
 const useCommunities = (filters: Filters) => {
-  const [communities, setCommunities] = useState<ICardDTO[]>();
+  const noFiltersSelected = () => {
+    return !filters.platforms.length && !filters.categories.length;
+  };
+
+  const [communities, setCommunities] = useState<Community[]>();
+
   useEffect(() => {
     const fetch = async () => {
-      let query = await db.collection("approved-communties").get();
-      let docs = query.docs.map((doc) => doc.data() as ICardDTO);
-      setCommunities(docs);
+      const queryFilters: Filters = {
+        platforms: noFiltersSelected() ? platformTypes : filters.platforms,
+        categories: noFiltersSelected() ? labelTypes : filters.categories,
+      };
+      // Disgusting I know
+      const queriedPlatforms = queryFilters.platforms.length
+        ? await db
+            .collection("approved-communties")
+            .where("type", "in", queryFilters.platforms)
+            .get()
+        : null;
+      const queriedCategories = queryFilters.categories.length
+        ? await db
+            .collection("approved-communties")
+            .where("categories", "array-contains-any", queryFilters.categories)
+            .get()
+        : null;
+      console.log(queriedCategories);
+      const platformDocs = queriedPlatforms
+        ? queriedPlatforms.docs.map((doc) => doc.data() as Community)
+        : [];
+      const categoryDocs = queriedCategories
+        ? queriedCategories.docs.map((doc) => doc.data() as Community)
+        : [];
+      console.log(platformDocs, categoryDocs);
+      const union = [...new Set([...platformDocs, ...categoryDocs])];
+      console.log(union);
+      setCommunities(union);
     };
     fetch();
   }, [filters]);

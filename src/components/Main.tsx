@@ -18,20 +18,12 @@ const Container = styled.div`
 let filters = { platform: "discord" };
 
 export default function Main() {
-  const [filter, setFilter] = useState({});
-  console.log(useCommunities(filter));
-  console.log("rerender");
   return (
     <ThemeProvider theme={MuiTheme}>
       <CssBaseline />
       <Navbar />
       <Container>
         <CheckBoxes />
-        <CommunityCard
-          community="U-M EECS"
-          platform="discord"
-          image="https://brand.umich.edu/assets/brand/style-guide/logo-guidelines/U-M_Logo-Hex.png"
-        />
       </Container>
     </ThemeProvider>
   );

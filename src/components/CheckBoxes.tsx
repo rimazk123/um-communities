@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   FormControl,
   FormLabel,
@@ -7,7 +7,9 @@ import {
   Checkbox,
 } from "@material-ui/core";
 import styled from "styled-components";
-import { platform } from "node:os";
+import CardGrid from "./CardGrid";
+import { useCommunities } from "../utils/hooks";
+import { Filters } from "../utils/types";
 
 const Container = styled.div`
   display: flex;
@@ -30,63 +32,79 @@ const StyledLabel = styled(FormControlLabel)`
   margin-bottom: -15px;
 `;
 
-const platformsDefault: { [key: string]: boolean } = {
-  Facebook: false,
-  Discord: false,
-  Slack: false,
-  Groupme: false,
-  Other: false,
-};
+const labelTypes = ["Entrepreneurship", "Gaming", "Sports", "Social", "Memes"];
 
-const labelsDefault: { [key: string]: boolean } = {
-  Entrepreneurship: false,
-  Engineering: false,
-  Social: false,
-  Gaming: false,
-  Sports: false,
-};
+const platformTypes = ["Discord", "Slack", "Facebook", "Other"];
 
 export default function CheckBoxes() {
-  const [platforms, setPlatforms] = useState(platformsDefault);
-  const [labels, setLabels] = useState(labelsDefault);
+  const [filters, setFilters] = useState<Filters>({
+    platforms: [],
+    categories: [],
+  });
 
   const getPlatformClick = (platform: string) => {
-    return () =>
-      setPlatforms({ ...platforms, [platform]: !platforms[platform] });
+    return () => {
+      if (filters.platforms!.includes(platform)) {
+        setFilters({
+          ...filters,
+          platforms: filters.platforms!.filter((p) => p !== platform),
+        });
+      } else {
+        setFilters({
+          ...filters,
+          platforms: [...filters.platforms!, platform],
+        });
+      }
+    };
   };
 
-  const getLabelClick = (label: string) => {
-    return () => setLabels({ ...labels, [label]: !labels[label] });
+  const getLabelClick = (category: string) => {
+    return () => {
+      if (filters.categories!.includes(category)) {
+        setFilters({
+          ...filters,
+          categories: filters.categories!.filter((c) => c !== category),
+        });
+      } else {
+        setFilters({
+          ...filters,
+          categories: [...filters.categories!, category],
+        });
+      }
+    };
   };
 
   return (
-    <Container>
-      <StyledFormControl>
-        <StyledLegend>Categories</StyledLegend>
-        <FormGroup>
-          {Object.keys(labelsDefault).map((label) => (
-            <StyledLabel
-              control={<Checkbox name={label} />}
-              label={label}
-              key={label}
-              onChange={getLabelClick(label)}
-            />
-          ))}
-        </FormGroup>
-      </StyledFormControl>
-      <StyledFormControl>
-        <StyledLegend>Platform</StyledLegend>
-        <FormGroup>
-          {Object.keys(platforms).map((platform) => (
-            <StyledLabel
-              control={<Checkbox name={platform} />}
-              label={platform}
-              key={platform}
-              onChange={getPlatformClick(platform)}
-            />
-          ))}
-        </FormGroup>
-      </StyledFormControl>
-    </Container>
+    <>
+      <Container>
+        <StyledFormControl>
+          <StyledLegend>Categories</StyledLegend>
+          <FormGroup>
+            {labelTypes.map((label) => (
+              <StyledLabel
+                control={<Checkbox name={label} />}
+                label={label}
+                key={label}
+                onChange={getLabelClick(label)}
+              />
+            ))}
+          </FormGroup>
+        </StyledFormControl>
+        <StyledFormControl>
+          <StyledLegend>Platform</StyledLegend>
+          <FormGroup>
+            {platformTypes.map((platform) => (
+              <StyledLabel
+                control={<Checkbox name={platform} />}
+                label={platform}
+                key={platform}
+                onChange={getPlatformClick(platform)}
+              />
+            ))}
+          </FormGroup>
+        </StyledFormControl>
+      </Container>
+      <CardGrid filters={filters} />
+    </>
   );
 }
