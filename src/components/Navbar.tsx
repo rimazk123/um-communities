@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { AppBar, Typography } from "@material-ui/core";
 
 const StyledAppBar = styled(AppBar)`
-  background-color: white;
+  background-color: #363642;
   height: 200px;
   width: 100vw;
   padding: 20px 40px;
   box-shadow: none;
   border-bottom: 1px solid #d1d1d1;
-  color: black;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: flex-end;

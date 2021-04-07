@@ -3,6 +3,7 @@ export interface Community {
   logo?: string;
   name?: string;
   type?: string;
+  desc?: string;
   url?: string;
 }
 

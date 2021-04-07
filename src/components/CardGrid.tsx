@@ -12,6 +12,7 @@ const Grid = styled.div`
   }
   @media (min-width: 1150px) {
     grid-template-columns: repeat(3, 1fr);
+    width: 925px;
   }
 `;
 
@@ -26,6 +27,7 @@ export default function CardGrid({ filters }: { filters: Filters }) {
               name={community.name}
               type={community.type}
               logo={community.logo}
+              url={community.url}
             />
           ))}
       </Grid>

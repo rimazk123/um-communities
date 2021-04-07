@@ -4,7 +4,6 @@ const MuiTheme = createMuiTheme({
   typography: {
     fontFamily: ["Noto Sans", "Sans Serif"].join(","),
     h2: {
-      color: "#262626",
       fontWeight: 600,
       letterSpacing: "-2px",
     },

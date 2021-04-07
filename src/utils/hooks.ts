@@ -3,6 +3,13 @@ import db from "./firebaseSetup";
 import { labelTypes, platformTypes } from "./constants";
 import { Community, Filters } from "./types";
 
+const objectUnion = (arr1: Community[], arr2: Community[]) => {
+  const names = arr1.map((community) => community.name);
+  return arr1.concat(
+    arr2.filter((community) => !names.includes(community.name))
+  );
+};
+
 const useCommunities = (filters: Filters) => {
   const noFiltersSelected = () => {
     return !filters.platforms.length && !filters.categories.length;
@@ -29,17 +36,13 @@ const useCommunities = (filters: Filters) => {
             .where("categories", "array-contains-any", queryFilters.categories)
             .get()
         : null;
-      console.log(queriedCategories);
       const platformDocs = queriedPlatforms
         ? queriedPlatforms.docs.map((doc) => doc.data() as Community)
         : [];
       const categoryDocs = queriedCategories
         ? queriedCategories.docs.map((doc) => doc.data() as Community)
         : [];
-      console.log(platformDocs, categoryDocs);
-      const union = [...new Set([...platformDocs, ...categoryDocs])];
-      console.log(union);
-      setCommunities(union);
+      setCommunities(objectUnion(platformDocs, categoryDocs));
     };
     fetch();
   }, [filters]);
