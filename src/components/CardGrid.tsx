@@ -18,18 +18,12 @@ const Grid = styled.div`
 
 export default function CardGrid({ filters }: { filters: Filters }) {
   const communities = useCommunities(filters);
+  console.log(communities);
   return (
     <>
       <Grid>
         {communities &&
-          communities.map((community) => (
-            <CommunityCard
-              name={community.name}
-              type={community.type}
-              logo={community.logo}
-              url={community.url}
-            />
-          ))}
+          communities.map((community) => <CommunityCard {...community} />)}
       </Grid>
     </>
   );

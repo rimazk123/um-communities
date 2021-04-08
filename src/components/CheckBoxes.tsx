@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -9,12 +9,14 @@ import {
 import styled from "styled-components";
 import CardGrid from "./CardGrid";
 import { useCommunities } from "../utils/hooks";
+import { labelTypes, platformTypes } from "../utils/constants";
 import { Filters } from "../utils/types";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 175px;
+  margin: 2vw;
   height: 100%;
 `;
 const StyledFormControl = styled(FormControl)`
@@ -24,17 +26,12 @@ const StyledFormControl = styled(FormControl)`
 
 const StyledLegend = styled(FormLabel)`
   font-weight: bold;
-  color: #262626;
   margin-bottom: 10px;
 `;
 
 const StyledLabel = styled(FormControlLabel)`
   margin-bottom: -15px;
 `;
-
-const labelTypes = ["Entrepreneurship", "Gaming", "Sports", "Social", "Memes"];
-
-const platformTypes = ["Discord", "Slack", "Facebook", "Other"];
 
 export default function CheckBoxes() {
   const [filters, setFilters] = useState<Filters>({

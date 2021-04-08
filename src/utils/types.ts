@@ -1,5 +1,5 @@
 export interface Community {
-  categories?: string;
+  categories?: string[];
   logo?: string;
   name?: string;
   type?: string;

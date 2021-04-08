@@ -12,7 +12,6 @@ const StyledAppBar = styled(AppBar)`
   width: 100vw;
   padding: 20px 40px;
   box-shadow: none;
-  border-bottom: 1px solid #d1d1d1;
   color: white;
   display: flex;
   align-items: center;

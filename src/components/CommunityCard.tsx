@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {
   Box,
   Card,
+  Chip,
   CardActionArea,
   CardActions,
   CardContent,
@@ -13,11 +14,12 @@ import {
 import { Community } from "../utils/types";
 import { Icon, IconifyIcon, InlineIcon } from "@iconify/react";
 import discordIcon from "@iconify-icons/mdi/discord";
+import facebookIcon from "@iconify-icons/il/facebook";
 
 const StyledCard = styled(Card)`
   width: 256px;
   margin: 10px 20px;
-  /* box-shadow: none; */
+  box-shadow: 2px gray;
   /* border: 1px solid darkgray; */
   /* border-radius: 10px; */
 `;
@@ -35,11 +37,34 @@ const StyledIcon = styled(Icon)`
   margin-right: 5px;
 `;
 
+const StyledCardActions = styled(CardActions)`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px;
+`;
+
+const StyledChip = styled(Chip)`
+  margin: 2px;
+  margin-left: 2px;
+  height: 20px;
+`;
+const StyledCardContent = styled(CardContent)`
+  /* padding: 9.5px; */
+`;
+
 const iconMappings: any = {
   Discord: discordIcon,
+  Facebook: facebookIcon,
 };
 
-export default function CommunityCard({ name, type, logo, url }: Community) {
+export default function CommunityCard({
+  name,
+  type,
+  logo,
+  url,
+  categories,
+}: Community) {
+  console.log(categories);
   return (
     <StyledCard variant="outlined">
       <a href="/">
@@ -55,14 +80,16 @@ export default function CommunityCard({ name, type, logo, url }: Community) {
         />
         <CardActionArea>
           <StyledMedia image={logo} title={name} />
-          <CardContent>
+          <StyledCardContent>
             <Typography variant="body2" color="textSecondary">
               Here is a description of the community.
             </Typography>
-          </CardContent>
+          </StyledCardContent>
         </CardActionArea>
       </a>
-      <CardActions></CardActions>
+      <StyledCardActions>
+        {categories && categories.map((c) => <StyledChip label={c} />)}
+      </StyledCardActions>
     </StyledCard>
   );
 }
