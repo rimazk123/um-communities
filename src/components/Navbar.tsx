@@ -3,7 +3,11 @@ import styled from "styled-components";
 import { AppBar, Typography } from "@material-ui/core";
 
 const StyledAppBar = styled(AppBar)`
-  background-color: #363642;
+  background: linear-gradient(
+    90deg,
+    rgba(113, 150, 255, 1) 17%,
+    rgba(42, 94, 232, 1) 100%
+  );
   height: 200px;
   width: 100vw;
   padding: 20px 40px;
@@ -25,6 +29,9 @@ export default function Navbar() {
     <StyledAppBar position="static">
       <TextWrapper>
         <Typography variant="h2">Communities @ U-M</Typography>
+        <Typography style={{ marginLeft: "10px" }}>
+          Find Discord servers, Slacks, and more at Michigan!
+        </Typography>
       </TextWrapper>
     </StyledAppBar>
   );

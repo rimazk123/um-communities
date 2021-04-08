@@ -2,10 +2,10 @@ import { createMuiTheme } from "@material-ui/core";
 
 const MuiTheme = createMuiTheme({
   typography: {
-    fontFamily: ["Noto Sans", "Sans Serif"].join(","),
+    fontFamily: ["Lato", "Sans Serif"].join(","),
     h2: {
       fontWeight: 600,
-      letterSpacing: "-2px",
+      letterSpacing: "-1px",
     },
   },
 });
