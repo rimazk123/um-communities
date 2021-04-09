@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core";
 import styled from "styled-components";
 import CardGrid from "./CardGrid";
-import { useCommunities } from "../utils/hooks";
 import { labelTypes, platformTypes } from "../utils/constants";
 import { Filters } from "../utils/types";
 

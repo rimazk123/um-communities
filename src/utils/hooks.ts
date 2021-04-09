@@ -45,6 +45,7 @@ const useCommunities = (filters: Filters) => {
       setCommunities(objectUnion(platformDocs, categoryDocs));
     };
     fetch();
+    // eslint-disable-next-line
   }, [filters]);
 
   return communities;

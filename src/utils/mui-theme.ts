@@ -3,6 +3,9 @@ import { createMuiTheme } from "@material-ui/core";
 const MuiTheme = createMuiTheme({
   palette: {
     type: "dark",
+    background: {
+      default: "#292929",
+    },
   },
   typography: {
     fontFamily: ["Lato", "Sans Serif"].join(","),
