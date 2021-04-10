@@ -34,6 +34,8 @@ const StyledIcon = styled(Icon)`
   width: 24px;
   margin-left: auto;
   margin-right: 5px;
+  display: flex;
+  align-items: center;
 `;
 
 const StyledCardActions = styled(CardActions)`
@@ -42,11 +44,17 @@ const StyledCardActions = styled(CardActions)`
   padding: 8px;
 `;
 
+interface ChipProps {
+  background: string;
+}
+
 const StyledChip = styled(Chip)`
   margin: 2px;
   margin-left: 2px;
   height: 20px;
+  background-color: ${(props: ChipProps) => props.background};
 `;
+
 const StyledCardContent = styled(CardContent)`
   /* padding: 9.5px; */
 `;
@@ -54,6 +62,15 @@ const StyledCardContent = styled(CardContent)`
 const iconMappings: any = {
   Discord: discordIcon,
   Facebook: facebookIcon,
+};
+
+const tagMappings: { [key: string]: string } = {
+  Entrepreneurship: "#876300",
+  Gaming: "#870000",
+  Sports: "#006918",
+  Social: "#006069",
+  Memes: "#002869",
+  Major: "#bd5200",
 };
 
 export default function CommunityCard({
@@ -93,7 +110,10 @@ export default function CommunityCard({
           </CardActionArea>
         </a>
         <StyledCardActions>
-          {categories && categories.map((c) => <StyledChip label={c} />)}
+          {categories &&
+            categories.map((c) => (
+              <StyledChip background={tagMappings[c]} label={c} />
+            ))}
         </StyledCardActions>
       </StyledCard>
     </div>
