@@ -39,14 +39,18 @@ export default function Navbar() {
   return (
     <StyledAppBar position="static">
       <TextWrapper>
-        <Typography variant="h2">Communities @ U-M</Typography>
+        <StyledLink href="/" color="textPrimary" underline="none">
+          <Typography variant="h2">Communities @ U-M</Typography>
+        </StyledLink>
         <Container>
           <Typography style={{ marginLeft: "10px" }}>
             Find Discord servers, Slacks, and more at Michigan!
           </Typography>
           <LeftSide>
-            <StyledLink color="textPrimary">Add a Community</StyledLink>|
-            <StyledLink color="textPrimary">Report an Issue</StyledLink>
+            <StyledLink color="textPrimary" href="/community">
+              Add a Community
+            </StyledLink>
+            |<StyledLink color="textPrimary">Report an Issue</StyledLink>
           </LeftSide>
         </Container>
       </TextWrapper>

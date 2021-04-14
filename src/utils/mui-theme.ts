@@ -6,6 +6,9 @@ const MuiTheme = createMuiTheme({
     background: {
       default: "#292929",
     },
+    primary: {
+      main: "rgb(42, 94, 232)",
+    },
   },
   typography: {
     fontFamily: ["Lato", "Sans Serif"].join(","),
