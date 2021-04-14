@@ -23,8 +23,9 @@ export default function CardGrid({ filters }: { filters: Filters }) {
   return (
     <>
       <Grid>
-        {communities &&
-          communities.map((community) => <CommunityCard {...community} />)}
+        {communities?.map((community) => (
+          <CommunityCard {...community} />
+        ))}
       </Grid>
     </>
   );

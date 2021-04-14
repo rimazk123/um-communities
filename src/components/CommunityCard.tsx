@@ -19,7 +19,7 @@ import facebookIcon from "@iconify-icons/il/facebook";
 const StyledCard = styled(Card)`
   width: 324px;
   margin: 10px 20px;
-  /* border: 1px solid darkgray; */
+  /* background-color: #2e3136; */
   border-radius: 10px;
 `;
 
@@ -84,7 +84,7 @@ export default function CommunityCard({
   console.log(categories);
   return (
     <div>
-      <StyledCard>
+      <StyledCard variant="outlined">
         <a href="/">
           <CardHeader
             avatar={
@@ -110,10 +110,9 @@ export default function CommunityCard({
           </CardActionArea>
         </a>
         <StyledCardActions>
-          {categories &&
-            categories.map((c) => (
-              <StyledChip background={tagMappings[c]} label={c} />
-            ))}
+          {categories?.map((c) => (
+            <StyledChip background={tagMappings[c]} label={c} />
+          ))}
         </StyledCardActions>
       </StyledCard>
     </div>

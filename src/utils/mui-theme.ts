@@ -4,7 +4,7 @@ const MuiTheme = createMuiTheme({
   palette: {
     type: "dark",
     background: {
-      default: "#292929",
+      default: "#23272a",
     },
     primary: {
       main: "rgb(42, 94, 232)",
@@ -15,6 +15,18 @@ const MuiTheme = createMuiTheme({
     h2: {
       fontWeight: 600,
       letterSpacing: "-1px",
+    },
+  },
+  overrides: {
+    MuiOutlinedInput: {
+      root: {
+        borderRadius: "0px",
+      },
+    },
+    MuiPaper: {
+      rounded: {
+        borderRadius: "0px",
+      },
     },
   },
 });
