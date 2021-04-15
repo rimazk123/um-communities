@@ -1,3 +1,4 @@
+import { firebase } from "./firebaseSetup";
 export interface Community {
   categories?: string[];
   logo?: string;
@@ -11,3 +12,5 @@ export interface Filters {
   platforms: string[];
   categories: string[];
 }
+
+export type AuthedUser = firebase.User | null;

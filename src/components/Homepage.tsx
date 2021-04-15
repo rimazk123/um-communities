@@ -5,18 +5,20 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
+  CircularProgress,
+  Button,
 } from "@material-ui/core";
 import styled from "styled-components";
 import CardGrid from "./CardGrid";
 import { labelTypes, platformTypes } from "../utils/constants";
 import { Filters } from "../utils/types";
+import { firebase } from "../utils/firebaseSetup";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 175px;
   margin: 2vw;
-  height: 100%;
 `;
 
 const StyledFormControl = styled(FormControl)`
@@ -33,7 +35,7 @@ const StyledLabel = styled(FormControlLabel)`
   margin-bottom: -15px;
 `;
 
-export default function CheckBoxes() {
+export default function HomePage() {
   const [filters, setFilters] = useState<Filters>({
     platforms: [],
     categories: [],
@@ -73,6 +75,7 @@ export default function CheckBoxes() {
 
   return (
     <>
+      <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
       <Container>
         <StyledFormControl>
           <StyledLegend>Categories</StyledLegend>
