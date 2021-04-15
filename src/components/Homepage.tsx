@@ -21,6 +21,22 @@ const Container = styled.div`
   margin: 2vw;
 `;
 
+const TopContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+`;
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const InnerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const StyledFormControl = styled(FormControl)`
   margin-top: 10px;
   margin-bottom: 20px;
@@ -74,37 +90,46 @@ export default function HomePage() {
   };
 
   return (
-    <>
-      <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
-      <Container>
-        <StyledFormControl>
-          <StyledLegend>Categories</StyledLegend>
-          <FormGroup>
-            {labelTypes.map((label) => (
-              <StyledLabel
-                control={<Checkbox name={label} />}
-                label={label}
-                key={label}
-                onChange={getLabelClick(label)}
-              />
-            ))}
-          </FormGroup>
-        </StyledFormControl>
-        <StyledFormControl>
-          <StyledLegend>Platform</StyledLegend>
-          <FormGroup>
-            {platformTypes.map((platform) => (
-              <StyledLabel
-                control={<Checkbox name={platform} />}
-                label={platform}
-                key={platform}
-                onChange={getPlatformClick(platform)}
-              />
-            ))}
-          </FormGroup>
-        </StyledFormControl>
-      </Container>
-      <CardGrid filters={filters} />
-    </>
+    <PageContainer>
+      <TopContainer>
+        <Button
+          style={{ height: "30px" }}
+          onClick={() => firebase.auth().signOut()}
+        >
+          Logout
+        </Button>
+      </TopContainer>
+      <InnerContainer>
+        <Container>
+          <StyledFormControl>
+            <StyledLegend>Categories</StyledLegend>
+            <FormGroup>
+              {labelTypes.map((label) => (
+                <StyledLabel
+                  control={<Checkbox name={label} />}
+                  label={label}
+                  key={label}
+                  onChange={getLabelClick(label)}
+                />
+              ))}
+            </FormGroup>
+          </StyledFormControl>
+          <StyledFormControl>
+            <StyledLegend>Platform</StyledLegend>
+            <FormGroup>
+              {platformTypes.map((platform) => (
+                <StyledLabel
+                  control={<Checkbox name={platform} />}
+                  label={platform}
+                  key={platform}
+                  onChange={getPlatformClick(platform)}
+                />
+              ))}
+            </FormGroup>
+          </StyledFormControl>
+        </Container>
+        <CardGrid filters={filters} />
+      </InnerContainer>
+    </PageContainer>
   );
 }

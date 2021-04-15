@@ -11,7 +11,7 @@ const Grid = styled.div`
   @media (min-width: 850px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (min-width: 1150px) {
+  @media (min-width: 1400px) {
     grid-template-columns: repeat(3, 1fr);
     width: 925px;
   }
@@ -19,13 +19,14 @@ const Grid = styled.div`
 
 export default function CardGrid({ filters }: { filters: Filters }) {
   const communities = useCommunities(filters);
-  console.log(communities);
   return (
     <>
       <Grid>
-        {communities?.map((community) => (
-          <CommunityCard {...community} />
-        ))}
+        {communities?.length ? (
+          communities.map((community) => <CommunityCard {...community} />)
+        ) : (
+          <p>No Communities were found :(</p>
+        )}
       </Grid>
     </>
   );
