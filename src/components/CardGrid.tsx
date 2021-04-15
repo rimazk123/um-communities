@@ -19,15 +19,19 @@ const Grid = styled.div`
 
 export default function CardGrid({ filters }: { filters: Filters }) {
   const communities = useCommunities(filters);
+
+  const render = () => {
+    if (!communities) return null;
+    else if (communities.length) {
+      return communities.map((community) => <CommunityCard {...community} />);
+    } else {
+      return <p>No Communities were found :( </p>;
+    }
+  };
+
   return (
     <>
-      <Grid>
-        {communities?.length ? (
-          communities.map((community) => <CommunityCard {...community} />)
-        ) : (
-          <p>No Communities were found :(</p>
-        )}
-      </Grid>
+      <Grid>{render()}</Grid>
     </>
   );
 }

@@ -15,7 +15,7 @@ const useCommunities = (filters: Filters) => {
     return !filters.platforms.length && !filters.categories.length;
   };
 
-  const [communities, setCommunities] = useState<Community[]>();
+  const [communities, setCommunities] = useState<Community[] | null>(null);
 
   useEffect(() => {
     const fetch = async () => {
