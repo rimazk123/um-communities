@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeProvider, CssBaseline } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
