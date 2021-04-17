@@ -17,12 +17,18 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 175px;
+  @media (max-width: 650px) {
+    width: 80%;
+  }
   margin: 2vw;
+  margin-left: 10%;
 `;
 
 const TopContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
+  padding-top: 10px;
+  width: 100%;
 `;
 
 const PageContainer = styled.div`
@@ -34,6 +40,12 @@ const PageContainer = styled.div`
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: row;
+  /* justify-content: center; */
+  /* margin: auto; */
+  @media (max-width: 650px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const StyledFormControl = styled(FormControl)`
@@ -92,7 +104,7 @@ export default function HomePage() {
     <PageContainer>
       <TopContainer>
         <Button
-          style={{ height: "30px" }}
+          style={{ height: "30px", marginRight: "20px" }}
           onClick={() => firebase.auth().signOut()}
         >
           Logout
@@ -102,7 +114,7 @@ export default function HomePage() {
         <Container>
           <StyledFormControl>
             <StyledLegend>Categories</StyledLegend>
-            <FormGroup>
+            <FormGroup row={window.innerWidth <= 650}>
               {labelTypes.map((label) => (
                 <StyledLabel
                   control={<Checkbox name={label} />}
@@ -115,7 +127,7 @@ export default function HomePage() {
           </StyledFormControl>
           <StyledFormControl>
             <StyledLegend>Platform</StyledLegend>
-            <FormGroup>
+            <FormGroup row={window.innerWidth <= 650}>
               {platformTypes.map((platform) => (
                 <StyledLabel
                   control={<Checkbox name={platform} />}

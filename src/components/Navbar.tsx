@@ -16,6 +16,9 @@ const StyledAppBar = styled(AppBar)`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media (max-width: 650px) {
+    height: 150px;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -25,10 +28,16 @@ const TextWrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
+  @media (max-width: 650px) {
+    flex-direction: column;
+  }
 `;
 
 const LeftSide = styled.div`
   margin-left: auto;
+  @media (max-width: 650px) {
+    margin-left: 0px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -40,7 +49,9 @@ export default function Navbar() {
     <StyledAppBar position="static">
       <TextWrapper>
         <StyledLink href="/" color="textPrimary" underline="none">
-          <Typography variant="h2">Communities @ U-M</Typography>
+          <Typography variant={window.innerWidth >= 650 ? "h2" : "h5"}>
+            Communities @ U-M
+          </Typography>
         </StyledLink>
         <Container>
           <Typography style={{ marginLeft: "10px" }}>

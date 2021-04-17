@@ -12,11 +12,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { AuthedUser } from "./utils/types";
 
 const Container = styled.div`
-  width: 90vw;
-  max-width: 1450px;
+  width: 100vw;
   display: flex;
   flex-direction: row;
-  margin: 20px auto;
+  padding: 20px auto;
   min-height: calc(100vh - 340px);
 `;
 

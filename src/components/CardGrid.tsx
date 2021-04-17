@@ -8,12 +8,12 @@ const Grid = styled.div`
   display: grid;
   grid-gap: 0.65em;
   grid-template-rows: min-content;
-  @media (min-width: 850px) {
+  margin: auto;
+  @media (min-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
   }
   @media (min-width: 1400px) {
     grid-template-columns: repeat(3, 1fr);
-    width: 925px;
   }
 `;
 

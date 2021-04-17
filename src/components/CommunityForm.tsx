@@ -26,7 +26,7 @@ const StyledButton = styled(Button)`
 
 const StyledForm = styled.form`
   margin-bottom: 25px;
-  width: 550px;
+  width: min(90vw, 550px);
   margin: auto;
 `;
 
