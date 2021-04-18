@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import LoginPage from "./components/LoginPage";
 import CommunityForm from "./components/CommunityForm";
+import IssuesForm from "./components/IssuesForm";
 import { CircularProgress, Button } from "@material-ui/core";
 import styled from "styled-components";
 import MuiTheme from "./utils/mui-theme";
@@ -42,6 +43,9 @@ export default function Main() {
         <BrowserRouter>
           <Switch>
             <Route path="/community" component={CommunityForm} />
+            <Route path="/issues">
+              <IssuesForm user={user} />
+            </Route>
             <Route path="/" component={HomePage} />
           </Switch>
         </BrowserRouter>

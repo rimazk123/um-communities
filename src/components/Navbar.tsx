@@ -61,7 +61,10 @@ export default function Navbar() {
             <StyledLink color="textPrimary" href="/community">
               Add a Community
             </StyledLink>
-            |<StyledLink color="textPrimary">Report an Issue</StyledLink>
+            |
+            <StyledLink color="textPrimary" href="/issues">
+              Report an Issue
+            </StyledLink>
           </LeftSide>
         </Container>
       </TextWrapper>

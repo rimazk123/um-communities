@@ -99,7 +99,7 @@ export default function CommunityForm() {
               type="link"
               id="link"
               name="link"
-              label="Discord Link"
+              label="Link"
               helperText="Please make sure your link is set to never expire!"
               variant="outlined"
               onChange={(e) => setLink(e.target.value)}

@@ -85,7 +85,7 @@ export default function CommunityCard({
   return (
     <div>
       <StyledCard variant="outlined">
-        <a href="/">
+        <a href={url}>
           <CardHeader
             avatar={
               <StyledIcon
