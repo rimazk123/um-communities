@@ -16,26 +16,48 @@ import discordIcon from '@iconify-icons/mdi/discord';
 import facebookIcon from '@iconify-icons/il/facebook';
 import { Community } from '../utils/types';
 
+const cardWidth = '300px';
+const halfWidth = '150px';
+
 const StyledCard = styled(Card)`
-  width: 324px;
+  width: ${cardWidth};
   margin: 10px 20px;
   /* background-color: #2e3136; */
-  border-radius: 10px;
+  border-radius: 5px;
+`;
+
+const HorizontalContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 const StyledMedia = styled(CardMedia)`
-  height: 288px;
+  height: ${halfWidth};
+  width: ${halfWidth};
+  margin-left: auto;
   background-size: cover;
+  border-bottom-left-radius: 40%;
   /* border-bottom: 1px solid gray; */
 `;
 
-const StyledIcon = styled(Icon)`
-  height: 24px;
-  width: 24px;
-  margin-left: auto;
-  margin-right: 5px;
+const HeaderContainer = styled.div`
+  display: block;
+  max-width: ${halfWidth};
+  padding: 20px;
+  margin: auto;
+`;
+
+const IconContainer = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
+  width: 100%;
+  padding-right: 10px;
+  padding-bottom: 10px;
+`;
+
+const StyledIcon = styled(Icon)`
+  height: 28px;
+  width: 28px;
 `;
 
 const StyledCardActions = styled(CardActions)`
@@ -56,7 +78,7 @@ const StyledChip = styled(Chip)`
 `;
 
 const StyledCardContent = styled(CardContent)`
-  /* padding: 9.5px; */
+  min-height: 125px;
 `;
 
 const iconMappings: any = {
@@ -79,22 +101,24 @@ export default function CommunityCard({ name, type, logo, url, categories, desc 
     <div>
       <StyledCard variant='outlined'>
         <a href={url}>
-          <CardHeader
-            avatar={<StyledIcon icon={iconMappings[type!]} height='24px' width='24px' />}
-            title={
-              <Box fontWeight='500' fontSize={18}>
+          <HorizontalContainer>
+            <HeaderContainer>
+              <Box fontWeight='600' fontSize={22} textAlign='center' color='white'>
                 {name}
               </Box>
-            }
-          />
-          <CardActionArea>
+            </HeaderContainer>
             <StyledMedia image={logo} title={name} />
+          </HorizontalContainer>
+          <CardActionArea>
             <StyledCardContent>
               <Typography variant='body2' color='textSecondary'>
                 {desc}
               </Typography>
             </StyledCardContent>
           </CardActionArea>
+          <IconContainer>
+            <StyledIcon icon={iconMappings[type!]} />
+          </IconContainer>
         </a>
         <StyledCardActions>
           {categories?.map((c) => (
