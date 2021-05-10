@@ -17,7 +17,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   padding: 20px auto;
-  min-height: calc(100vh - 340px);
+  min-height: calc(100vh - 200px);
+  opacity: 0.8;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cpattern id='pattern' width='34' height='34' viewBox='0 0 40 40' patternUnits='userSpaceOnUse' patternTransform='rotate(130)'%3E%3Crect id='pattern-background' width='400%25' height='400%25' fill='rgba(35, 39, 42,1)' style='--darkreader-inline-fill:%231d1f21;'%3E%3C/rect%3E%3Cpath fill='rgba(45, 55, 72,1)' d='M0 29.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5zM0 69.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5z' style='--darkreader-inline-fill:%231d1f21;'%3E%3C/path%3E%3Cpath fill='rgba(26, 32, 44,1)' d='M20 29.5a 9.5-9.5 0 0 0 9.5-9.5a 10.5-10.5 0 0 1 10.5-10.5v1a-9.5 9.5 0 0 0-9.5 9.5a-10.5 10.5 0 0 1-10.5 10.5z' style='--darkreader-inline-fill:%23d2cec8;'%3E%3C/path%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23pattern)' height='100%25' width='100%25'%3E%3C/rect%3E%3C/svg%3E");
 `;
 
 export default function Main() {

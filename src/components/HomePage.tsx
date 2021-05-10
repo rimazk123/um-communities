@@ -12,10 +12,13 @@ const Container = styled.div`
   width: 175px;
   @media (max-width: 650px) {
     width: 80%;
+    border-left: 0px;
   }
   margin: 2vw;
   margin-left: 10%;
 `;
+
+const CheckboxContainer = styled.div``;
 
 const TopContainer = styled.div`
   display: flex;
@@ -98,32 +101,34 @@ export default function HomePage() {
       </TopContainer>
       <InnerContainer>
         <Container>
-          <StyledFormControl>
-            <StyledLegend>Categories</StyledLegend>
-            <FormGroup row={window.innerWidth <= 650}>
-              {labelTypes.map((label) => (
-                <StyledLabel
-                  control={<Checkbox name={label} />}
-                  label={label}
-                  key={label}
-                  onChange={getLabelClick(label)}
-                />
-              ))}
-            </FormGroup>
-          </StyledFormControl>
-          <StyledFormControl>
-            <StyledLegend>Platform</StyledLegend>
-            <FormGroup row={window.innerWidth <= 650}>
-              {platformTypes.map((platform) => (
-                <StyledLabel
-                  control={<Checkbox name={platform} />}
-                  label={platform}
-                  key={platform}
-                  onChange={getPlatformClick(platform)}
-                />
-              ))}
-            </FormGroup>
-          </StyledFormControl>
+          <CheckboxContainer>
+            <StyledFormControl>
+              <StyledLegend>Categories</StyledLegend>
+              <FormGroup row={window.innerWidth <= 650}>
+                {labelTypes.map((label) => (
+                  <StyledLabel
+                    control={<Checkbox name={label} />}
+                    label={label}
+                    key={label}
+                    onChange={getLabelClick(label)}
+                  />
+                ))}
+              </FormGroup>
+            </StyledFormControl>
+            <StyledFormControl>
+              <StyledLegend>Platform</StyledLegend>
+              <FormGroup row={window.innerWidth <= 650}>
+                {platformTypes.map((platform) => (
+                  <StyledLabel
+                    control={<Checkbox name={platform} />}
+                    label={platform}
+                    key={platform}
+                    onChange={getPlatformClick(platform)}
+                  />
+                ))}
+              </FormGroup>
+            </StyledFormControl>
+          </CheckboxContainer>
         </Container>
         <CardGrid filters={filters} />
       </InnerContainer>
