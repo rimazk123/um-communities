@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pretty-quick": "pretty-quick"
+    "pretty-quick": "pretty-quick",
+    "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +53,14 @@
     "@iconify-icons/mdi": "^1.1.13",
     "@iconify/react": "^1.1.4",
     "@iconify/types": "^1.0.6",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "husky": "4.3.6",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0"

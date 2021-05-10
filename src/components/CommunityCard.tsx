@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import {
   Box,
   Card,
@@ -10,11 +10,11 @@ import {
   CardHeader,
   CardMedia,
   Typography,
-} from "@material-ui/core";
-import { Community } from "../utils/types";
-import { Icon } from "@iconify/react";
-import discordIcon from "@iconify-icons/mdi/discord";
-import facebookIcon from "@iconify-icons/il/facebook";
+} from '@material-ui/core';
+import { Icon } from '@iconify/react';
+import discordIcon from '@iconify-icons/mdi/discord';
+import facebookIcon from '@iconify-icons/il/facebook';
+import { Community } from '../utils/types';
 
 const StyledCard = styled(Card)`
   width: 324px;
@@ -65,37 +65,24 @@ const iconMappings: any = {
 };
 
 const tagMappings: { [key: string]: string } = {
-  Professional: "#876300",
-  Gaming: "#870000",
-  Sports: "#006918",
-  Social: "#006069",
-  Memes: "#002869",
-  Major: "#bd5200",
+  Professional: '#876300',
+  Gaming: '#870000',
+  Sports: '#006918',
+  Social: '#006069',
+  Memes: '#002869',
+  Major: '#bd5200',
 };
 
-export default function CommunityCard({
-  name,
-  type,
-  logo,
-  url,
-  categories,
-  desc,
-}: Community) {
+export default function CommunityCard({ name, type, logo, url, categories, desc }: Community) {
   console.log(categories);
   return (
     <div>
-      <StyledCard variant="outlined">
+      <StyledCard variant='outlined'>
         <a href={url}>
           <CardHeader
-            avatar={
-              <StyledIcon
-                icon={iconMappings[type!]}
-                height="24px"
-                width="24px"
-              />
-            }
+            avatar={<StyledIcon icon={iconMappings[type!]} height='24px' width='24px' />}
             title={
-              <Box fontWeight="500" fontSize={18}>
+              <Box fontWeight='500' fontSize={18}>
                 {name}
               </Box>
             }
@@ -103,7 +90,7 @@ export default function CommunityCard({
           <CardActionArea>
             <StyledMedia image={logo} title={name} />
             <StyledCardContent>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant='body2' color='textSecondary'>
                 {desc}
               </Typography>
             </StyledCardContent>

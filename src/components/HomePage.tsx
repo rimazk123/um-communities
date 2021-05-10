@@ -1,17 +1,10 @@
-import React, { useState } from "react";
-import {
-  FormControl,
-  FormLabel,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  Button,
-} from "@material-ui/core";
-import styled from "styled-components";
-import CardGrid from "./CardGrid";
-import { labelTypes, platformTypes } from "../utils/constants";
-import { Filters } from "../utils/types";
-import { firebase } from "../utils/firebaseSetup";
+import React, { useState } from 'react';
+import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox, Button } from '@material-ui/core';
+import styled from 'styled-components';
+import CardGrid from './CardGrid';
+import { labelTypes, platformTypes } from '../utils/constants';
+import { Filters } from '../utils/types';
+import { firebase } from '../utils/firebaseSetup';
 
 const Container = styled.div`
   display: flex;
@@ -68,45 +61,38 @@ export default function HomePage() {
     categories: [],
   });
 
-  const getPlatformClick = (platform: string) => {
-    return () => {
-      if (filters.platforms!.includes(platform)) {
-        setFilters({
-          ...filters,
-          platforms: filters.platforms!.filter((p) => p !== platform),
-        });
-      } else {
-        setFilters({
-          ...filters,
-          platforms: [...filters.platforms!, platform],
-        });
-      }
-    };
+  const getPlatformClick = (platform: string) => () => {
+    if (filters.platforms!.includes(platform)) {
+      setFilters({
+        ...filters,
+        platforms: filters.platforms!.filter((p) => p !== platform),
+      });
+    } else {
+      setFilters({
+        ...filters,
+        platforms: [...filters.platforms!, platform],
+      });
+    }
   };
 
-  const getLabelClick = (category: string) => {
-    return () => {
-      if (filters.categories!.includes(category)) {
-        setFilters({
-          ...filters,
-          categories: filters.categories!.filter((c) => c !== category),
-        });
-      } else {
-        setFilters({
-          ...filters,
-          categories: [...filters.categories!, category],
-        });
-      }
-    };
+  const getLabelClick = (category: string) => () => {
+    if (filters.categories!.includes(category)) {
+      setFilters({
+        ...filters,
+        categories: filters.categories!.filter((c) => c !== category),
+      });
+    } else {
+      setFilters({
+        ...filters,
+        categories: [...filters.categories!, category],
+      });
+    }
   };
 
   return (
     <PageContainer>
       <TopContainer>
-        <Button
-          style={{ height: "30px", marginRight: "20px" }}
-          onClick={() => firebase.auth().signOut()}
-        >
+        <Button style={{ height: '30px', marginRight: '20px' }} onClick={() => firebase.auth().signOut()}>
           Logout
         </Button>
       </TopContainer>

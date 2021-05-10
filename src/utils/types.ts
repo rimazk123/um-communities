@@ -1,4 +1,5 @@
-import { firebase } from "./firebaseSetup";
+import { firebase } from './firebaseSetup';
+
 export interface Community {
   categories?: string[];
   logo?: string;
