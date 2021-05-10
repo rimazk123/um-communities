@@ -65,7 +65,7 @@ const iconMappings: any = {
 };
 
 const tagMappings: { [key: string]: string } = {
-  Entrepreneurship: "#876300",
+  Professional: "#876300",
   Gaming: "#870000",
   Sports: "#006918",
   Social: "#006069",

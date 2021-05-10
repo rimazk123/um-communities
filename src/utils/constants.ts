@@ -1,5 +1,5 @@
 const labelTypes = [
-  "Entrepreneurship",
+  "Professional",
   "Gaming",
   "Sports",
   "Social",

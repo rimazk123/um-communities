@@ -70,7 +70,7 @@ export default function IssuesForm({ user }: props) {
               helperText="500 character limit"
               name="description"
               variant="outlined"
-              label="Community Description"
+              label="Issue Description"
               onChange={(e) => setIssue(e.target.value)}
               value={issue}
               inputProps={{ maxLength: 500 }}
