@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 import {
   InputLabel,
   TextField,
@@ -12,9 +12,9 @@ import {
   FormControlLabel,
   FormGroup,
   Checkbox,
-} from '@material-ui/core';
-import { platformTypes, labelTypes } from '../utils/constants';
-import db from '../utils/firebaseSetup';
+} from "@material-ui/core";
+import { platformTypes, labelTypes } from "../utils/constants";
+import db from "../utils/firebaseSetup";
 
 const StyledButton = styled(Button)`
   box-shadow: none;
@@ -31,12 +31,12 @@ const StyledForm = styled.form`
 `;
 
 export default function CommunityForm() {
-  const [name, setName] = useState('');
-  const [link, setLink] = useState('');
-  const [desc, setDesc] = useState('');
-  const [platform, setPlatform] = useState('Discord');
+  const [name, setName] = useState("");
+  const [link, setLink] = useState("");
+  const [desc, setDesc] = useState("");
+  const [platform, setPlatform] = useState("Discord");
   const [categories, setCategories] = useState<string[]>([]);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const onCategoryChange = (category: string) => () => {
     if (categories.includes(category)) {
@@ -48,22 +48,22 @@ export default function CommunityForm() {
 
   const submitCommunity = async () => {
     try {
-      await db.collection('submitted-communities').add({
+      await db.collection("submitted-communities").add({
         name,
         url: link,
         type: platform,
         categories,
         desc,
       });
-      setSubmitMessage('Your submission was successful!');
+      setSubmitMessage("Your submission was successful!");
     } catch (e) {
-      setSubmitMessage('There was an issue with your submission :(');
+      setSubmitMessage("There was an issue with your submission :(");
     }
-    setTimeout(() => setSubmitMessage(''), 2000);
-    setName('');
-    setLink('');
-    setDesc('');
-    setPlatform('Discord');
+    setTimeout(() => setSubmitMessage(""), 2000);
+    setName("");
+    setLink("");
+    setDesc("");
+    setPlatform("Discord");
     setCategories([]);
   };
 
@@ -73,12 +73,13 @@ export default function CommunityForm() {
 
   return (
     <>
-      {submitMessage !== '' ? (
+      {submitMessage !== "" ? (
         <p>{submitMessage}</p>
       ) : (
         <StyledForm>
           <Typography>
-            We manually review and approve all submitted communities, so expect a 1-2 day delay before it shows up
+            We manually review and approve all submitted communities, so expect a 1-2 day delay
+            before it shows up
           </Typography>
           <FormControl fullWidth margin='normal'>
             <TextField
@@ -143,7 +144,7 @@ export default function CommunityForm() {
               <FormGroup row>
                 {labelTypes.map((platform) => (
                   <FormControlLabel
-                    style={{ marginRight: '10px' }}
+                    style={{ marginRight: "10px" }}
                     control={<Checkbox name={platform} />}
                     label={platform}
                     key={platform}

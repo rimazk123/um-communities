@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import db from './firebaseSetup';
-import { labelTypes, platformTypes } from './constants';
-import { Community, Filters } from './types';
+import { useState, useEffect } from "react";
+import db from "./firebaseSetup";
+import { labelTypes, platformTypes } from "./constants";
+import { Community, Filters } from "./types";
 
 const objectUnion = (arr1: Community[], arr2: Community[]) => {
   const names = arr1.map((community) => community.name);
@@ -21,16 +21,23 @@ const useCommunities = (filters: Filters) => {
       };
       // Disgusting I know
       const queriedPlatforms = queryFilters.platforms.length
-        ? await db.collection('approved-communties').where('type', 'in', queryFilters.platforms).get()
+        ? await db
+            .collection("approved-communties")
+            .where("type", "in", queryFilters.platforms)
+            .get()
         : null;
       const queriedCategories = queryFilters.categories.length
         ? await db
-            .collection('approved-communties')
-            .where('categories', 'array-contains-any', queryFilters.categories)
+            .collection("approved-communties")
+            .where("categories", "array-contains-any", queryFilters.categories)
             .get()
         : null;
-      const platformDocs = queriedPlatforms ? queriedPlatforms.docs.map((doc) => doc.data() as Community) : [];
-      const categoryDocs = queriedCategories ? queriedCategories.docs.map((doc) => doc.data() as Community) : [];
+      const platformDocs = queriedPlatforms
+        ? queriedPlatforms.docs.map((doc) => doc.data() as Community)
+        : [];
+      const categoryDocs = queriedCategories
+        ? queriedCategories.docs.map((doc) => doc.data() as Community)
+        : [];
       setCommunities(objectUnion(platformDocs, categoryDocs));
     };
     fetch();

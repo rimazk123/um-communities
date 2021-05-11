@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import {
   Box,
   Card,
@@ -10,14 +10,14 @@ import {
   CardHeader,
   CardMedia,
   Typography,
-} from '@material-ui/core';
-import { Icon } from '@iconify/react';
-import discordIcon from '@iconify-icons/mdi/discord';
-import facebookIcon from '@iconify-icons/il/facebook';
-import { Community } from '../utils/types';
+} from "@material-ui/core";
+import { Icon } from "@iconify/react";
+import discordIcon from "@iconify-icons/mdi/discord";
+import facebookIcon from "@iconify-icons/il/facebook";
+import { Community } from "../utils/types";
 
-const cardWidth = '300px';
-const halfWidth = '150px';
+const cardWidth = "300px";
+const halfWidth = "150px";
 
 const StyledCard = styled(Card)`
   width: ${cardWidth};
@@ -87,12 +87,12 @@ const iconMappings: any = {
 };
 
 const tagMappings: { [key: string]: string } = {
-  Professional: '#876300',
-  Gaming: '#870000',
-  Sports: '#006918',
-  Social: '#006069',
-  Memes: '#002869',
-  Major: '#bd5200',
+  Professional: "#876300",
+  Gaming: "#870000",
+  Sports: "#006918",
+  Social: "#006069",
+  Memes: "#002869",
+  Major: "#bd5200",
 };
 
 export default function CommunityCard({ name, type, logo, url, categories, desc }: Community) {

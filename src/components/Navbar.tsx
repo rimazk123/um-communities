@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { AppBar, Link, Typography } from '@material-ui/core';
+import React from "react";
+import styled from "styled-components";
+import { AppBar, Link, Typography } from "@material-ui/core";
 
 const StyledAppBar = styled(AppBar)`
   background: linear-gradient(90deg, rgba(42, 94, 232, 1) 17%, rgba(113, 150, 255, 1) 100%);
@@ -45,10 +45,14 @@ export default function Navbar() {
     <StyledAppBar position='static'>
       <TextWrapper>
         <StyledLink href='/' color='textPrimary' underline='none'>
-          <Typography variant={window.innerWidth >= 650 ? 'h2' : 'h5'}>Communities @ U-M</Typography>
+          <Typography variant={window.innerWidth >= 650 ? "h2" : "h5"}>
+            Communities @ U-M
+          </Typography>
         </StyledLink>
         <Container>
-          <Typography style={{ marginLeft: '10px' }}>Find Discord servers, Slacks, and more at Michigan!</Typography>
+          <Typography style={{ marginLeft: "10px" }}>
+            Find Discord servers, Slacks, and more at Michigan!
+          </Typography>
           <LeftSide>
             <StyledLink color='textPrimary' href='/community'>
               Add a Community

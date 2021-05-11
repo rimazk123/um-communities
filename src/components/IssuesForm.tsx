@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { TextField, Button, FormControl, Typography } from '@material-ui/core';
-import db from '../utils/firebaseSetup';
-import { AuthedUser } from '../utils/types';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { TextField, Button, FormControl, Typography } from "@material-ui/core";
+import db from "../utils/firebaseSetup";
+import { AuthedUser } from "../utils/types";
 
 const StyledButton = styled(Button)`
   box-shadow: none;
@@ -23,31 +23,32 @@ interface props {
 }
 
 export default function IssuesForm({ user }: props) {
-  const [issue, setIssue] = useState('');
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [issue, setIssue] = useState("");
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const submitCommunity = async () => {
     try {
-      await db.collection('submitted-issues').add({
+      await db.collection("submitted-issues").add({
         user: user?.email,
         desc: issue,
       });
-      setSubmitMessage('Your submission was successful!');
+      setSubmitMessage("Your submission was successful!");
     } catch (e) {
-      setSubmitMessage('There was an issue with your submission :(');
+      setSubmitMessage("There was an issue with your submission :(");
     }
-    setTimeout(() => setSubmitMessage(''), 2000);
-    setIssue('');
+    setTimeout(() => setSubmitMessage(""), 2000);
+    setIssue("");
   };
 
   return (
     <>
-      {submitMessage !== '' ? (
+      {submitMessage !== "" ? (
         <p>{submitMessage}</p>
       ) : (
         <StyledForm>
           <Typography>
-            Please use this to let us know of any issues regarding the communities listed or with the site in general.
+            Please use this to let us know of any issues regarding the communities listed or with
+            the site in general.
           </Typography>
           <FormControl fullWidth margin='normal'>
             <TextField
