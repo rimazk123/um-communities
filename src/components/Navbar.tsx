@@ -40,11 +40,11 @@ const StyledLink = styled(Link)`
   margin: 0 8px;
 `;
 
-export default function Navbar() {
+export default function Navbar(): JSX.Element {
   return (
-    <StyledAppBar position='static'>
+    <StyledAppBar position="static">
       <TextWrapper>
-        <StyledLink href='/' color='textPrimary' underline='none'>
+        <StyledLink href="/" color="textPrimary" underline="none">
           <Typography variant={window.innerWidth >= 650 ? "h2" : "h5"}>
             Communities @ U-M
           </Typography>
@@ -54,11 +54,11 @@ export default function Navbar() {
             Find Discord servers, Slacks, and more at Michigan!
           </Typography>
           <LeftSide>
-            <StyledLink color='textPrimary' href='/community'>
+            <StyledLink color="textPrimary" href="/community">
               Add a Community
             </StyledLink>
             |
-            <StyledLink color='textPrimary' href='/issues'>
+            <StyledLink color="textPrimary" href="/issues">
               Report an Issue
             </StyledLink>
           </LeftSide>

@@ -8,7 +8,7 @@ const objectUnion = (arr1: Community[], arr2: Community[]) => {
   return arr1.concat(arr2.filter((community) => !names.includes(community.name)));
 };
 
-const useCommunities = (filters: Filters) => {
+const useCommunities = (filters: Filters): Community[] | null => {
   const noFiltersSelected = () => !filters.platforms.length && !filters.categories.length;
 
   const [communities, setCommunities] = useState<Community[] | null>(null);
@@ -47,4 +47,5 @@ const useCommunities = (filters: Filters) => {
   return communities;
 };
 
+// eslint-disable-next-line
 export { useCommunities };

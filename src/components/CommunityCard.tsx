@@ -7,7 +7,6 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
-  CardHeader,
   CardMedia,
   Typography,
 } from "@material-ui/core";
@@ -95,15 +94,21 @@ const tagMappings: { [key: string]: string } = {
   Major: "#bd5200",
 };
 
-export default function CommunityCard({ name, type, logo, url, categories, desc }: Community) {
-  console.log(categories);
+export default function CommunityCard({
+  name,
+  type,
+  logo,
+  url,
+  categories,
+  desc,
+}: Community): JSX.Element {
   return (
     <div>
-      <StyledCard variant='outlined'>
+      <StyledCard variant="outlined">
         <a href={url}>
           <HorizontalContainer>
             <HeaderContainer>
-              <Box fontWeight='600' fontSize={22} textAlign='center' color='white'>
+              <Box fontWeight="600" fontSize={22} textAlign="center" color="white">
                 {name}
               </Box>
             </HeaderContainer>
@@ -111,13 +116,13 @@ export default function CommunityCard({ name, type, logo, url, categories, desc 
           </HorizontalContainer>
           <CardActionArea>
             <StyledCardContent>
-              <Typography variant='body2' color='textSecondary'>
+              <Typography variant="body2" color="textSecondary">
                 {desc}
               </Typography>
             </StyledCardContent>
           </CardActionArea>
           <IconContainer>
-            <StyledIcon icon={iconMappings[type!]} />
+            <StyledIcon icon={iconMappings[type]} />
           </IconContainer>
         </a>
         <StyledCardActions>

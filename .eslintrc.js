@@ -21,13 +21,17 @@ module.exports = {
     browser: true,
     node: true,
   },
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "prettier"],
   extends: [
     "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
     "plugin:@typescript-eslint/recommended", // Uses the recommended rules from @typescript-eslint/eslint-plugin,
     "airbnb",
     "airbnb/hooks",
+    "prettier",
   ],
+  globals: {
+    JSX: true,
+  },
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
@@ -44,5 +48,6 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".tsx", ".ts"] }],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-explicit-any": "off",
   },
 };

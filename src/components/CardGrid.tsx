@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import CommunityCard from './CommunityCard';
-import { Filters } from '../utils/types';
-import { useCommunities } from '../utils/hooks';
+import React from "react";
+import styled from "styled-components";
+import CommunityCard from "./CommunityCard";
+import { Filters } from "../utils/types";
+import { useCommunities } from "../utils/hooks";
 
 const Grid = styled.div`
   display: grid;
@@ -17,13 +17,22 @@ const Grid = styled.div`
   }
 `;
 
-export default function CardGrid({ filters }: { filters: Filters }) {
+export default function CardGrid({ filters }: { filters: Filters }): JSX.Element {
   const communities = useCommunities(filters);
 
   const render = () => {
     if (!communities) return null;
     if (communities.length) {
-      return communities.map((community) => <CommunityCard {...community} />);
+      return communities.map((community) => (
+        <CommunityCard
+          name={community.name}
+          type={community.type}
+          categories={community.categories}
+          desc={community.desc}
+          logo={community.logo}
+          url={community.url}
+        />
+      ));
     }
     return <p>No Communities were found :( </p>;
   };

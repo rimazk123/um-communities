@@ -22,7 +22,7 @@ interface props {
   user: AuthedUser;
 }
 
-export default function IssuesForm({ user }: props) {
+export default function IssuesForm({ user }: props): JSX.Element {
   const [issue, setIssue] = useState("");
   const [submitMessage, setSubmitMessage] = useState("");
 
@@ -50,34 +50,34 @@ export default function IssuesForm({ user }: props) {
             Please use this to let us know of any issues regarding the communities listed or with
             the site in general.
           </Typography>
-          <FormControl fullWidth margin='normal'>
+          <FormControl fullWidth margin="normal">
             <TextField
-              type='contact'
-              id='contact'
-              name='contact'
-              variant='outlined'
-              label='Contact'
+              type="contact"
+              id="contact"
+              name="contact"
+              variant="outlined"
+              label="Contact"
               disabled
               value={user?.email}
               required
             />
             <br />
             <TextField
-              type='text'
+              type="text"
               multiline
               rows={5}
-              id='description'
-              helperText='500 character limit'
-              name='description'
-              variant='outlined'
-              label='Issue Description'
+              id="description"
+              helperText="500 character limit"
+              name="description"
+              variant="outlined"
+              label="Issue Description"
               onChange={(e) => setIssue(e.target.value)}
               value={issue}
               inputProps={{ maxLength: 500 }}
               required
             />
             <br />
-            <StyledButton variant='contained' color='primary' onClick={submitCommunity}>
+            <StyledButton variant="contained" color="primary" onClick={submitCommunity}>
               Submit
             </StyledButton>
           </FormControl>

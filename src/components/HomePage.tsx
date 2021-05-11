@@ -65,36 +65,36 @@ const StyledLabel = styled(FormControlLabel)`
   margin-bottom: -15px;
 `;
 
-export default function HomePage() {
+export default function HomePage(): JSX.Element {
   const [filters, setFilters] = useState<Filters>({
     platforms: [],
     categories: [],
   });
 
   const getPlatformClick = (platform: string) => () => {
-    if (filters.platforms!.includes(platform)) {
+    if (filters.platforms?.includes(platform)) {
       setFilters({
         ...filters,
-        platforms: filters.platforms!.filter((p) => p !== platform),
+        platforms: filters.platforms.filter((p) => p !== platform),
       });
     } else {
       setFilters({
         ...filters,
-        platforms: [...filters.platforms!, platform],
+        platforms: [...filters.platforms, platform],
       });
     }
   };
 
   const getLabelClick = (category: string) => () => {
-    if (filters.categories!.includes(category)) {
+    if (filters.categories?.includes(category)) {
       setFilters({
         ...filters,
-        categories: filters.categories!.filter((c) => c !== category),
+        categories: filters.categories.filter((c) => c !== category),
       });
     } else {
       setFilters({
         ...filters,
-        categories: [...filters.categories!, category],
+        categories: [...filters.categories, category],
       });
     }
   };

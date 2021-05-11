@@ -1,12 +1,12 @@
-import { firebase } from './firebaseSetup';
+import { firebase } from "./firebaseSetup";
 
 export interface Community {
-  categories?: string[];
-  logo?: string;
-  name?: string;
-  type?: string;
-  desc?: string;
-  url?: string;
+  categories: string[];
+  logo: string;
+  name: string;
+  type: string;
+  desc: string;
+  url: string;
 }
 
 export interface Filters {
