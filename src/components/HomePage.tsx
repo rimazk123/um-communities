@@ -9,8 +9,9 @@ import {
 } from "@material-ui/core";
 import styled from "styled-components";
 import CardGrid from "./CardGrid";
+import LoginPage from "./LoginPage";
 import { labelTypes, platformTypes } from "../utils/constants";
-import { Filters } from "../utils/types";
+import { Filters, AuthedUser } from "../utils/types";
 import { firebase } from "../utils/firebaseSetup";
 
 const Container = styled.div`
@@ -28,10 +29,13 @@ const Container = styled.div`
 const CheckboxContainer = styled.div``;
 
 const TopContainer = styled.div`
+  margin: 0 auto;
   display: flex;
+  justify-content: space-around;
   flex-direction: row-reverse;
-  padding-top: 10px;
-  width: 100%;
+  padding: 10px;
+  width: 90%;
+  max-width: 1150px;
 `;
 
 const PageContainer = styled.div`
@@ -43,8 +47,6 @@ const PageContainer = styled.div`
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
-  /* margin: auto; */
   @media (max-width: 650px) {
     flex-direction: column;
     align-items: center;
@@ -65,7 +67,11 @@ const StyledLabel = styled(FormControlLabel)`
   margin-bottom: -15px;
 `;
 
-export default function HomePage(): JSX.Element {
+interface AuthedUserProp {
+  user: AuthedUser;
+}
+
+export default function HomePage({ user }: AuthedUserProp): JSX.Element {
   const [filters, setFilters] = useState<Filters>({
     platforms: [],
     categories: [],
@@ -99,16 +105,40 @@ export default function HomePage(): JSX.Element {
     }
   };
 
+  const renderHeader = (): JSX.Element => {
+    const button = (
+      <Button style={{ marginLeft: "auto" }} onClick={() => firebase.auth().signOut()}>
+        Logout
+      </Button>
+    );
+    if (user?.email?.slice(-9) === "umich.edu") {
+      return button;
+    }
+    if (user) {
+      return (
+        <>
+          {button}
+          <p>
+            It looks like you are logged in with a non-umich email -- please log in with a umich
+            email to access community links
+          </p>
+        </>
+      );
+    }
+    return (
+      <>
+        <LoginPage />
+        <p>
+          In order to protect communities from spam, we request that you log in with your umich
+          google account to access community links.
+        </p>
+      </>
+    );
+  };
+
   return (
     <PageContainer>
-      <TopContainer>
-        <Button
-          style={{ height: "30px", marginRight: "20px" }}
-          onClick={() => firebase.auth().signOut()}
-        >
-          Logout
-        </Button>
-      </TopContainer>
+      <TopContainer>{renderHeader()}</TopContainer>
       <InnerContainer>
         <Container>
           <CheckboxContainer>

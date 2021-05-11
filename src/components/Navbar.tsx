@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AppBar, Link, Typography } from "@material-ui/core";
+import { AppBar, Link, Typography, Tooltip } from "@material-ui/core";
 
 const StyledAppBar = styled(AppBar)`
   background: linear-gradient(90deg, rgba(42, 94, 232, 1) 17%, rgba(113, 150, 255, 1) 100%);
@@ -40,11 +40,30 @@ const StyledLink = styled(Link)`
   margin: 0 8px;
 `;
 
-export default function Navbar(): JSX.Element {
+interface NavbarProps {
+  isUserLoggedIn: boolean;
+}
+
+interface ConditionProp {
+  condition: boolean;
+  title: string;
+  children: JSX.Element;
+}
+
+const ConditionalTooltip = ({ condition, title, children }: ConditionProp) =>
+  condition ? (
+    <Tooltip title={title} placement='top'>
+      {children}
+    </Tooltip>
+  ) : (
+    children
+  );
+
+export default function Navbar({ isUserLoggedIn }: NavbarProps): JSX.Element {
   return (
-    <StyledAppBar position="static">
+    <StyledAppBar position='static'>
       <TextWrapper>
-        <StyledLink href="/" color="textPrimary" underline="none">
+        <StyledLink href='/' color='textPrimary' underline='none'>
           <Typography variant={window.innerWidth >= 650 ? "h2" : "h5"}>
             Communities @ U-M
           </Typography>
@@ -54,13 +73,17 @@ export default function Navbar(): JSX.Element {
             Find Discord servers, Slacks, and more at Michigan!
           </Typography>
           <LeftSide>
-            <StyledLink color="textPrimary" href="/community">
-              Add a Community
-            </StyledLink>
+            <ConditionalTooltip title='Log in to add a community' condition={!isUserLoggedIn}>
+              <StyledLink color='textPrimary' href={isUserLoggedIn ? "/community" : undefined}>
+                Add a Community
+              </StyledLink>
+            </ConditionalTooltip>
             |
-            <StyledLink color="textPrimary" href="/issues">
-              Report an Issue
-            </StyledLink>
+            <ConditionalTooltip title='Log in to report an issue' condition={!isUserLoggedIn}>
+              <StyledLink color='textPrimary' href={isUserLoggedIn ? "/issues" : undefined}>
+                Report an Issue
+              </StyledLink>
+            </ConditionalTooltip>
           </LeftSide>
         </Container>
       </TextWrapper>

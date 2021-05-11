@@ -1,31 +1,31 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createMuiTheme } from "@material-ui/core";
 
 const MuiTheme = createMuiTheme({
   palette: {
-    type: 'dark',
+    type: "dark",
     background: {
-      default: '#23272a',
+      default: "#23272a",
     },
     primary: {
-      main: 'rgb(42, 94, 232)',
+      main: "rgb(42, 94, 232)",
     },
   },
   typography: {
-    fontFamily: ['Lato', 'Sans Serif'].join(','),
+    fontFamily: ["Lato", "Sans Serif"].join(","),
     h2: {
       fontWeight: 600,
-      letterSpacing: '-1px',
+      letterSpacing: "-1px",
     },
   },
   overrides: {
     MuiOutlinedInput: {
       root: {
-        borderRadius: '0px',
+        borderRadius: "0px",
       },
     },
     MuiPaper: {
       rounded: {
-        borderRadius: '0px',
+        borderRadius: "0px",
       },
     },
   },

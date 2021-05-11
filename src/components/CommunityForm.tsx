@@ -81,25 +81,25 @@ export default function CommunityForm(): JSX.Element {
             We manually review and approve all submitted communities, so expect a 1-2 day delay
             before it shows up
           </Typography>
-          <FormControl fullWidth margin="normal">
+          <FormControl fullWidth margin='normal'>
             <TextField
-              type="text"
-              id="name"
-              name="name"
-              variant="outlined"
-              label="Community Name"
+              type='text'
+              id='name'
+              name='name'
+              variant='outlined'
+              label='Community Name'
               onChange={(e) => setName(e.target.value)}
               value={name}
               required
             />
             <br />
             <TextField
-              type="link"
-              id="link"
-              name="link"
-              label="Link"
-              helperText="Please make sure your link is set to never expire!"
-              variant="outlined"
+              type='link'
+              id='link'
+              name='link'
+              label='Link'
+              helperText='Please make sure your link is set to never expire!'
+              variant='outlined'
               onChange={(e) => setLink(e.target.value)}
               inputProps={{ maxLength: 200 }}
               value={link}
@@ -107,26 +107,26 @@ export default function CommunityForm(): JSX.Element {
             />
             <br />
             <TextField
-              type="text"
+              type='text'
               multiline
               rows={3}
-              id="description"
-              helperText="200 character limit"
-              name="description"
-              variant="outlined"
-              label="Community Description"
+              id='description'
+              helperText='200 character limit'
+              name='description'
+              variant='outlined'
+              label='Community Description'
               onChange={(e) => setDesc(e.target.value)}
               value={desc}
               inputProps={{ maxLength: 200 }}
               required
             />
             <br />
-            <FormControl variant="outlined">
-              <InputLabel htmlFor="platform">Platform</InputLabel>
+            <FormControl variant='outlined'>
+              <InputLabel htmlFor='platform'>Platform</InputLabel>
               <Select
-                name="platform"
-                label="platform"
-                id="platform"
+                name='platform'
+                label='platform'
+                id='platform'
                 required
                 value={platform}
                 onChange={(e) => setPlatform(e.target.value as string)}
@@ -153,7 +153,7 @@ export default function CommunityForm(): JSX.Element {
                 ))}
               </FormGroup>
             </FormControl>
-            <StyledButton variant="contained" color="primary" onClick={submitCommunity}>
+            <StyledButton variant='contained' color='primary' onClick={submitCommunity}>
               Submit
             </StyledButton>
           </FormControl>

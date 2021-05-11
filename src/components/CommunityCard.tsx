@@ -104,26 +104,26 @@ export default function CommunityCard({
 }: Community): JSX.Element {
   return (
     <div>
-      <StyledCard variant="outlined">
+      <StyledCard variant='outlined'>
         <a href={url}>
-          <HorizontalContainer>
-            <HeaderContainer>
-              <Box fontWeight="600" fontSize={22} textAlign="center" color="white">
-                {name}
-              </Box>
-            </HeaderContainer>
-            <StyledMedia image={logo} title={name} />
-          </HorizontalContainer>
           <CardActionArea>
+            <HorizontalContainer>
+              <HeaderContainer>
+                <Box fontWeight='600' fontSize={22} textAlign='center' color='white'>
+                  {name}
+                </Box>
+              </HeaderContainer>
+              <StyledMedia image={logo} title={name} />
+            </HorizontalContainer>
             <StyledCardContent>
-              <Typography variant="body2" color="textSecondary">
+              <Typography variant='body2' color='textSecondary'>
                 {desc}
               </Typography>
             </StyledCardContent>
+            <IconContainer>
+              <StyledIcon icon={iconMappings[type]} />
+            </IconContainer>
           </CardActionArea>
-          <IconContainer>
-            <StyledIcon icon={iconMappings[type]} />
-          </IconContainer>
         </a>
         <StyledCardActions>
           {categories?.map((c) => (

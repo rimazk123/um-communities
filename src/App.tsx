@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { ThemeProvider, CssBaseline, CircularProgress, Button } from "@material-ui/core";
+import { ThemeProvider, CssBaseline, CircularProgress } from "@material-ui/core";
 import styled from "styled-components";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
-import LoginPage from "./components/LoginPage";
 import CommunityForm from "./components/CommunityForm";
 import IssuesForm from "./components/IssuesForm";
 
@@ -39,41 +38,25 @@ export default function Main(): JSX.Element {
 
   const renderPage = () => {
     if (loading) return <CircularProgress style={{ margin: "auto" }} />;
-    if (currentUser && currentUser.email?.slice(-9) === "umich.edu") {
-      return (
-        <BrowserRouter>
-          <Switch>
-            <Route path="/community" component={CommunityForm} />
-            <Route path="/issues">
-              <IssuesForm user={currentUser} />
-            </Route>
-            <Route path="/" component={HomePage} />
-          </Switch>
-        </BrowserRouter>
-      );
-    }
-    if (currentUser) {
-      return (
-        <div
-          style={{
-            margin: "auto",
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <p>User not authorized</p>
-          <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
-        </div>
-      );
-    }
-    return <LoginPage />;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path='/community' component={CommunityForm} />
+          <Route path='/issues'>
+            <IssuesForm user={currentUser} />
+          </Route>
+          <Route path='/'>
+            <HomePage user={currentUser} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
   };
 
   return (
     <ThemeProvider theme={MuiTheme}>
       <CssBaseline />
-      <Navbar />
+      <Navbar isUserLoggedIn={currentUser?.email?.slice(-9) === "umich.edu"} />
       <Container>{renderPage()}</Container>
     </ThemeProvider>
   );

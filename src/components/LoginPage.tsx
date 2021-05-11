@@ -9,9 +9,7 @@ export default function LoginPage(): JSX.Element {
     <>
       {/* <Button onClick={() => firebase.auth().signOut()}>Logout</Button> */}
       <Button
-        style={{ margin: "auto" }}
-        color="primary"
-        variant="contained"
+        style={{ marginLeft: "auto" }}
         onClick={() => firebase.auth().signInWithRedirect(provider)}
       >
         Login with Google
