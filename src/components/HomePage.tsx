@@ -111,7 +111,7 @@ export default function HomePage(): JSX.Element {
         color='secondary'
         size='small'
         style={{ marginLeft: "auto", boxShadow: "none", borderRadius: "0px", maxHeight: "30px" }}
-        onClick={() => firebase.auth().signOut}
+        onClick={() => firebase.auth().signOut()}
       >
         Logout
       </Button>
