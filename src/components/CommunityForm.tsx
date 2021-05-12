@@ -28,6 +28,7 @@ const StyledForm = styled.form`
   margin-bottom: 25px;
   width: min(90vw, 550px);
   margin: auto;
+  padding: 40px 0;
 `;
 
 export default function CommunityForm(): JSX.Element {

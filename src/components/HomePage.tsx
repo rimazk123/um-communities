@@ -32,6 +32,7 @@ const TopContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-direction: row-reverse;
   padding: 10px;
   width: 90%;
@@ -107,7 +108,13 @@ export default function HomePage({ user }: AuthedUserProp): JSX.Element {
 
   const renderHeader = (): JSX.Element => {
     const button = (
-      <Button style={{ marginLeft: "auto" }} onClick={() => firebase.auth().signOut()}>
+      <Button
+        variant='contained'
+        color='secondary'
+        size='small'
+        style={{ marginLeft: "auto", boxShadow: "none", borderRadius: "0px", maxHeight: "30px" }}
+        onClick={() => firebase.auth().signOut()}
+      >
         Logout
       </Button>
     );
