@@ -1,4 +1,34 @@
-# Getting Started with Create React App
+# UM Communities: A public directory of all open Discords, Slacks, and other communities at Michigan!
+
+## Why make UM Communities?
+
+1. Because I was bored
+2. More importantly, in the era of Covid interest in online communities has grown tremendously -- yet very few people seem to know about UMich's rich selection of Discord servers and other communities. Rather than having to sift through Reddit posts and other Discord servers to find them, UM Communities aims to bring visibility to all those communities at Michigan by providing students a centralized, secure location to find invites and links while also being able to share and submit their own.
+
+### What this project uses
+
+- React: Our favorite frontend library
+- TypeScript: Static type checking
+- React contexts: State management, specifically for accessing auth state in various parts of the project
+- Firebase: Backend-as-a-Service (BaaS) for storing data and using authentication
+- Material-UI: Component library of choice
+- Eslint/Prettier: Configured to use [AirBnB's style guide](https://www.npmjs.com/package/eslint-config-airbnb)
+
+## Setup
+
+Install Dependencies
+
+```bash
+npm install .
+```
+
+Then rename `.env.sample` to `.env` and populate the fields with your respective firebaseConfig fields. These can be found by going to your project in Firebase project settings under the **general tab**.
+
+To enable authentication, you **must** make sure Email/Password and Google are enabled as Sign-in Providers.
+
+# Here's the boring CRA stuffs
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
