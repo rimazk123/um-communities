@@ -11,7 +11,7 @@ import styled from "styled-components";
 import CardGrid from "./CardGrid";
 import LoginPage from "./LoginPage";
 import { labelTypes, platformTypes } from "../utils/constants";
-import { Filters } from "../utils/types";
+import { Filters } from "../types/types";
 import { firebase } from "../utils/firebaseSetup";
 import AuthContext from "../context/authContext";
 

@@ -13,7 +13,7 @@ import {
 import { Icon } from "@iconify/react";
 import discordIcon from "@iconify-icons/mdi/discord";
 import facebookIcon from "@iconify-icons/il/facebook";
-import { Community } from "../utils/types";
+import { Community } from "../types/types";
 import AuthContext from "../context/authContext";
 
 const cardWidth = "300px";

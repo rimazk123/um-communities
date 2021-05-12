@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthedUser } from "../utils/types";
+import { AuthedUser } from "../types/types";
 
 interface authContextTypes {
   currentUser: AuthedUser;

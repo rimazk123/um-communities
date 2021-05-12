@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import CommunityCard from "./CommunityCard";
-import { Filters } from "../utils/types";
-import { useCommunities } from "../utils/hooks";
+import { Filters } from "../types/types";
+import useCommunities from "../hooks/useCommunities";
 
 const Grid = styled.div`
   display: grid;

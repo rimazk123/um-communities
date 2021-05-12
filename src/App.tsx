@@ -10,7 +10,7 @@ import IssuesForm from "./components/IssuesForm";
 import MuiTheme from "./utils/mui-theme";
 import { firebase } from "./utils/firebaseSetup";
 import AuthContext from "./context/authContext";
-import { AuthedUser } from "./utils/types";
+import { AuthedUser } from "./types/types";
 
 const Container = styled.div`
   width: 100vw;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { TextField, Button, FormControl, Typography } from "@material-ui/core";
 import db from "../utils/firebaseSetup";
-import { AuthedUser } from "../utils/types";
+import { AuthedUser } from "../types/types";
 
 const StyledButton = styled(Button)`
   box-shadow: none;

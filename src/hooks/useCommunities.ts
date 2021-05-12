@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import db from "./firebaseSetup";
-import { labelTypes, platformTypes } from "./constants";
-import { Community, Filters } from "./types";
+import db from "../utils/firebaseSetup";
+import { labelTypes, platformTypes } from "../utils/constants";
+import { Community, Filters } from "../types/types";
 
 const objectUnion = (arr1: Community[], arr2: Community[]) => {
   const names = arr1.map((community) => community.name);
@@ -48,4 +48,4 @@ const useCommunities = (filters: Filters): Community[] | null => {
 };
 
 // eslint-disable-next-line
-export { useCommunities };
+export default useCommunities;
