@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   FormControl,
   FormLabel,
@@ -11,8 +11,9 @@ import styled from "styled-components";
 import CardGrid from "./CardGrid";
 import LoginPage from "./LoginPage";
 import { labelTypes, platformTypes } from "../utils/constants";
-import { Filters, AuthedUser } from "../utils/types";
+import { Filters } from "../utils/types";
 import { firebase } from "../utils/firebaseSetup";
+import AuthContext from "../context/authContext";
 
 const Container = styled.div`
   display: flex;
@@ -68,15 +69,12 @@ const StyledLabel = styled(FormControlLabel)`
   margin-bottom: -15px;
 `;
 
-interface AuthedUserProp {
-  user: AuthedUser;
-}
-
-export default function HomePage({ user }: AuthedUserProp): JSX.Element {
+export default function HomePage(): JSX.Element {
   const [filters, setFilters] = useState<Filters>({
     platforms: [],
     categories: [],
   });
+  const authContext = useContext(AuthContext);
 
   const getPlatformClick = (platform: string) => () => {
     if (filters.platforms?.includes(platform)) {
@@ -113,15 +111,15 @@ export default function HomePage({ user }: AuthedUserProp): JSX.Element {
         color='secondary'
         size='small'
         style={{ marginLeft: "auto", boxShadow: "none", borderRadius: "0px", maxHeight: "30px" }}
-        onClick={() => firebase.auth().signOut()}
+        onClick={() => firebase.auth().signOut}
       >
         Logout
       </Button>
     );
-    if (user?.email?.slice(-9) === "umich.edu") {
+    if (authContext.isUserAuthed()) {
       return button;
     }
-    if (user) {
+    if (authContext.currentUser) {
       return (
         <>
           {button}

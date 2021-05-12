@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { AppBar, Link, Typography, Tooltip } from "@material-ui/core";
+import AuthContext from "../context/authContext";
 
 const StyledAppBar = styled(AppBar)`
   background: linear-gradient(90deg, rgba(42, 94, 232, 1) 17%, rgba(113, 150, 255, 1) 100%);
@@ -40,10 +41,6 @@ const StyledLink = styled(Link)`
   margin: 0 8px;
 `;
 
-interface NavbarProps {
-  isUserLoggedIn: boolean;
-}
-
 interface ConditionProp {
   condition: boolean;
   title: string;
@@ -59,7 +56,8 @@ const ConditionalTooltip = ({ condition, title, children }: ConditionProp) =>
     children
   );
 
-export default function Navbar({ isUserLoggedIn }: NavbarProps): JSX.Element {
+export default function Navbar(): JSX.Element {
+  const authContext = useContext(AuthContext);
   return (
     <StyledAppBar position='static'>
       <TextWrapper>
@@ -73,14 +71,26 @@ export default function Navbar({ isUserLoggedIn }: NavbarProps): JSX.Element {
             Find Discord servers, Slacks, and more at Michigan!
           </Typography>
           <LeftSide>
-            <ConditionalTooltip title='Log in to add a community' condition={!isUserLoggedIn}>
-              <StyledLink color='textPrimary' href={isUserLoggedIn ? "/community" : undefined}>
+            <ConditionalTooltip
+              title='Log in to add a community'
+              condition={!authContext.isUserAuthed()}
+            >
+              <StyledLink
+                color='textPrimary'
+                href={authContext.isUserAuthed() ? "/community" : undefined}
+              >
                 Add a Community
               </StyledLink>
             </ConditionalTooltip>
             |
-            <ConditionalTooltip title='Log in to report an issue' condition={!isUserLoggedIn}>
-              <StyledLink color='textPrimary' href={isUserLoggedIn ? "/issues" : undefined}>
+            <ConditionalTooltip
+              title='Log in to report an issue'
+              condition={!authContext.isUserAuthed()}
+            >
+              <StyledLink
+                color='textPrimary'
+                href={authContext.isUserAuthed() ? "/issues" : undefined}
+              >
                 Report an Issue
               </StyledLink>
             </ConditionalTooltip>

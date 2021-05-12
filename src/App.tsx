@@ -9,6 +9,7 @@ import IssuesForm from "./components/IssuesForm";
 
 import MuiTheme from "./utils/mui-theme";
 import { firebase } from "./utils/firebaseSetup";
+import AuthContext from "./context/authContext";
 import { AuthedUser } from "./utils/types";
 
 const Container = styled.div`
@@ -36,6 +37,8 @@ export default function Main(): JSX.Element {
     });
   });
 
+  const isUserAuthed = (): boolean => currentUser?.email?.slice(-9) === "umich.edu";
+
   const renderPage = () => {
     if (loading) return <CircularProgress style={{ margin: "auto" }} />;
     return (
@@ -46,7 +49,7 @@ export default function Main(): JSX.Element {
             <IssuesForm user={currentUser} />
           </Route>
           <Route path='/'>
-            <HomePage user={currentUser} />
+            <HomePage />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -55,9 +58,11 @@ export default function Main(): JSX.Element {
 
   return (
     <ThemeProvider theme={MuiTheme}>
-      <CssBaseline />
-      <Navbar isUserLoggedIn={currentUser?.email?.slice(-9) === "umich.edu"} />
-      <Container>{renderPage()}</Container>
+      <AuthContext.Provider value={{ currentUser, isUserAuthed }}>
+        <CssBaseline />
+        <Navbar />
+        <Container>{renderPage()}</Container>
+      </AuthContext.Provider>
     </ThemeProvider>
   );
 }

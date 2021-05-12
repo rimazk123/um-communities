@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {
   Box,
@@ -14,6 +14,7 @@ import { Icon } from "@iconify/react";
 import discordIcon from "@iconify-icons/mdi/discord";
 import facebookIcon from "@iconify-icons/il/facebook";
 import { Community } from "../utils/types";
+import AuthContext from "../context/authContext";
 
 const cardWidth = "300px";
 const halfWidth = "150px";
@@ -102,10 +103,11 @@ export default function CommunityCard({
   categories,
   desc,
 }: Community): JSX.Element {
+  const authContext = useContext(AuthContext);
   return (
     <div>
       <StyledCard variant='outlined'>
-        <a href={url}>
+        <a href={authContext.isUserAuthed() ? url : undefined}>
           <CardActionArea>
             <HorizontalContainer>
               <HeaderContainer>
